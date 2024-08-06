@@ -1,0 +1,586 @@
+\documentclass[a4paper,10pt]{article}
+
+% Use the geometry package to set the DIN A4 standard
+\usepackage[a4paper, left=10mm, right=10mm, top=10mm, bottom=10mm]{geometry}
+
+% Use the German locale
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Use a sans-serif font
+\renewcommand{\familydefault}{\sfdefault}
+
+% Optional: Use a more modern sans-serif font, such as Helvetica or Arial
+\usepackage{helvet}
+
+% Subtitle https://tex.stackexchange.com/a/50186/197779
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}}%
+}
+
+\title{Ihr Titel Hier}
+\subtitle{Untertitel}
+\author{Ihr Name}
+\date{\today}
+
+\setlength{\parindent}{0pt} % Set paragraph indentation to zero
+
+\usepackage{enumerate,amsthm,xcolor,graphicx,amsmath,amssymb,latexsym,framed,algorithmicx,algorithm,tikz,stmaryrd,enumitem}
+\usepackage{multicol}
+\newcommand{\br}{\hfill\newline\noindent}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\natnum}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\realnum}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\modulo}{\mod}
+\newcommand{\lt}{<}
+\newcommand{\gt}{>}
+\newcommand{\set}[2]{\left\{#1 \mid #2\right\}}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\bigOSymbol}{\mathcal{O}}
+
+\begin{document}
+
+\section{Basics}
+
+\begin{multicols}{3}
+
+\subsection{Logarithmusgesetze}
+
+\begin{align*}
+    \log_a(xy) &= \log_a(x) + \log_a(y) \\
+    \log_a\left(\frac{x}{y}\right) &= \log_a(x) - \log_a(y) \\
+    \log_a(x^r) &= r \log_a(x) \\
+    \log_a(1) &= 0 \\
+    \log_a(a) &= 1 \\
+    \log_a(a^x) &= x \\
+    a^{\log_a(x)} &= x \\
+    \log_a(x) &= \frac{\log_b(x)}{\log_b(a)} \quad (\text{Basiswechsel})
+\end{align*}
+
+\subsection{Potenzgesetze}
+
+\begin{align*}
+    a^m \cdot a^n &= a^{m+n} \\
+    \frac{a^m}{a^n} &= a^{m-n} \\
+    (a^m)^n &= a^{m \cdot n} \\
+    (ab)^n &= a^n \cdot b^n \\
+    \left(\frac{a}{b}\right)^n &= \frac{a^n}{b^n} \\
+    a^0 &= 1 \quad \text{für } a \neq 0 \\
+    a^{-n} &= \frac{1}{a^n}
+\end{align*}
+
+\subsection{Wurzelgesetze}
+
+\begin{align*}
+    \sqrt[n]{a \cdot b} &= \sqrt[n]{a} \cdot \sqrt[n]{b} \\
+    \sqrt[n]{\frac{a}{b}} &= \frac{\sqrt[n]{a}}{\sqrt[n]{b}} \\
+    \sqrt[n]{a^m} &= a^{\frac{m}{n}} \\
+    \sqrt[n]{a} \cdot \sqrt[m]{a} &= a^{\left(\frac{1}{n} + \frac{1}{m}\right)} \\
+    \sqrt[n]{\sqrt[m]{a}} &= \sqrt[mn]{a}
+\end{align*}
+
+\textbf{Allaussagen 4.13}
+
+$K_5$ nicht planar
+
+$K_{3,3}$ nicht planar
+
+Jeder planare Graph geradlinig
+
+Fermat's großer Satz $\forall n\in\N_{\ge 3} \neg \exists a,b,c\in\N: a^n + b^n = c^n$
+
+Goldbach'sche Vermutung jede gerade Zahl Summe zweier Primzahlen
+
+\textbf{Strings}
+
+$A^* = \{\varepsilon\} \cup \bigcup_{i=1}^\infty A^i$
+
+\textbf{Minimal (dein pp) / Maximal (mein pp)}
+
+Minimal: keine kleineren Elemente
+
+Kleinstes: alle anderen Elemente größer
+
+Jedes kleinste Element minimal, aber nicht jedes minimale Element das kleinste
+
+\textbf{Gaußsche Summenformel}
+
+$\sum_{i=1}^n \; i \; = \; \frac{n(n+1)}{2}$
+
+\textbf{Bernoulli}
+
+$(1+x)^n \geq 1+nx$
+
+\textbf{Binomischer Lehrsatz}
+
+$(a+b)^n = \sum_{i=0}^n \binom{n}{i} a^i b^{n-i}$
+
+\section{Aussagenlogik}
+
+\textbf{Junktorenregeln}
+
+De-morgan'sche Regel I
+
+$\neg (A \vee B) \equiv \neg A \wedge \neg B$
+
+De-morgan'sche Regel II
+
+$\neg (A \wedge B) \equiv \neg A \vee \neg B$
+
+Distributivgesetz I
+
+$(A \wedge B)\vee C \equiv (A \vee C) \wedge (B \vee C)$
+
+Distributivgesetz II
+
+$(A \vee B)\wedge C \equiv (A \wedge C) \vee (B \wedge C)$
+
+Implikation
+
+$A\rightarrow B \equiv \neg A \vee B$
+
+Äquivalenz
+
+$A\leftrightarrow B \equiv (A \rightarrow B) \wedge (B \rightarrow A)$
+
+\textbf{Quantorlogik}
+
+$\forall$-Zusammenfassung
+
+$(\forall x \in X: \varphi(x)) \wedge (\forall x \in X: \psi(x)) \equiv \forall x \in X: (\varphi(x) \wedge \psi(x))$
+
+$\exists$-Zusammenfassung
+
+$(\exists x \in X: \varphi(x)) \vee (\exists x \in X: \psi(x)) \equiv \exists x \in X: (\varphi(x) \vee \psi(x))$
+
+\textbf{Ringschluss}
+
+$ \varphi_{n} \rightarrow \varphi_1 \wedge \forall i \in [1..n-1]: \varphi_i \rightarrow \varphi_{i+1}. $
+
+\textbf{Verkettung von Eigenschaften}
+
+$f \text{inj/surj/bij} \land g \text{inj/surj/bij} \implies f\circ g\text{inj/surj/bij}$
+
+\textbf{Rechtsinverses}
+
+$A$ und $B$ nicht-leere Mengen, sowie $f\colon A \rightarrow B$
+$f$ inj $\iff$ Es gibt eine surjektive Funktion $g\colon B \rightarrow A$ so, dass für alle $a \in A$ gilt $g(f(a))=a$
+
+\textbf{Linksinverses}
+
+$f$ surj $\iff$ Es gibt eine injektive Funktion $g\colon B \rightarrow A$ so, dass für alle $b \in B$ gilt $f(g(b))=b$
+
+\textbf{Kardinalität}
+
+$f\colon A \rightarrow B$ injektiv, wenn $|A| \leq |B|$.
+
+$f\colon A \rightarrow B$ surjektiv, wenn $|A| \leq |B|$.
+
+$A \subseteq B$, so gilt $|A| \leq |B|$.
+
+$|A| \neq |Pot(A)|$.
+
+\textbf{Taubenschlagprinzip}
+
+$|A| > |B|$, dann $f: A \to B$ nicht inj
+
+\textbf{Ordnungsrelation}
+
+Transitiv $a \leq b \land b \leq c \rightarrow a \leq c$
+
+antisymmetrisch $a \leq b \land b \leq a \rightarrow a=b$
+
+reflexiv $a \leq a$
+
+Äquivalenz: symmetrisch $a = b \rightarrow b = a$
+
+\section{Algebra}
+
+Magma: Abgeschlossenheit $a \cdot a \in A$
+
+Halbgruppe: Assoziativität $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+
+Monoid: Neutrales Element $a \cdot e = a = e \cdot a$
+
+Gruppe: Inverses Element $a \cdot b = e = b \cdot a$
+
+\textbf{Gruppeneigenschaften Funktionen}
+
+$(\mathcal{F}_A,\circ)$ Funktionen $A\to A$ Monoid
+
+$(\mathcal{B}_A,\circ)$ Bijektionen $A\to A$ Gruppe
+
+\textbf{Logische Operatoren}
+
+$(\{\mathtt{t},\mathtt{f}\},\mathtt{AND})$ ist ein kommutatives Monoid mit neutralem Element $\mathtt{t}$, aber keine Gruppe.
+
+$(\{\mathtt{t},\mathtt{f}\},\mathtt{XOR})$ ist eine kommutative Gruppe mit neutralem Element $\mathtt{f}$.
+
+$(\{\mathtt{t},\mathtt{f}\},\mathtt{OR})$ ist ein kommutatives Monoid mit neutralem Element $\mathtt{f}$, aber keine Gruppe.
+
+\textbf{Argumentweise Operation}
+
+$(f \diamond g) (a) = f(a) \diamond g(a)$ erbt Struktureigenschaften von einzelner Operation.
+
+Inverses / Neutrales ist eindeutig
+
+$(ab)^{-1} = b^{-1} a^{-1}$
+
+\textbf{Ring}
+
+Dann ist $(A,+,\cdot)$ ein Ring falls $(A,+)$ eine kommutative Gruppe mit einem neutralen Element $0$ ist und $(A, \cdot)$ eine Halbgruppe
+
+$\forall a,b,c \in A: (a+b)\cdot c = a\cdot c + b \cdot c$
+
+$\forall a,b,c \in A: a\cdot(b+c) = a\cdot b + a \cdot c$
+
+Körper: $(A \setminus \{0\},\cdot)$ eine kommutative Gruppe
+
+\textbf{Ringrechenregeln}
+
+Für alle $a \in R$, $0a = 0 = a0$.
+
+Für alle $a,b \in R$, $a(-b) = -(ab)$ (mit anderen Worten: $ab$ ist das additiv Inverse von $a \cdot (-b)$).
+
+Für alle $a,b \in R$, $(-a)b = -(ab)$.
+
+Für alle $a,b \in R$, $(-a)(-b) = ab$.
+
+Falls $(R,\cdot)$ ein neutrales Element $1$ hat, dann gilt, für alle $a \in R$, $-a = (-1)a$.
+
+\textbf{Untergesocks}
+
+Untermonoid muss gleiches neutrales Elemnt haben. Es kann Teilmengen mit anderem neutralem Element geben.
+
+7.5 Neutrales Element Untergruppe gleich Gruppe.
+
+\textbf{Untergruppenkriterium}
+
+$(G,\cdot)$ Gruppe, $U\subseteq G$, $U\neq \emptyset$ $a,b\in U: a\cdot b^{-1}\in U$.
+
+\textbf{Produktstruktur}
+
+(kartesisches Gruppenprodukt) $(A,\diamond) \times (B,\ast) = (C,\otimes)$ Gruppe mit $(a,b) \otimes (a',b') = (a \diamond a',b \ast b')$
+
+\textbf{Homomorphismus}
+
+$f: A \to B$ mit $f(a \diamond b) = f(a) \ast f(b)$
+
+wenn bijektiv: Isomorphismus.
+
+Isomorphismus erhält Struktur.
+
+Inverser Isomorphismus auch Isomorphismus.
+
+\textbf{Zyklische Gruppe}
+
+$\langle g \rangle = \set{g^i}{i \in \integers} = G$
+
+$|\langle g \rangle|$ Ordnung von g
+
+$\langle g \rangle$ abelsch, $\subseteq$-kleinste Untergruppe die g hat
+
+\textbf{Potenzen von Gruppenelementen}
+
+$(g^i)^{-1} = g^{-i}$, $g^i \cdot g^j = g^{i+j}$
+
+Bei G Ordnung k: $g^{k-1} = g^{-1}$, k kleinste Zahl mit $g^k=1$
+
+\textbf{Satz von Lagrange} $|U|\;|\;|G|$
+
+\textbf{Kleiner Satz von Fermat}
+
+$g^{|G|} = 1$, also auch $a^{-1} = a^{k-1}$. Für Primzahlen p ist $a^{p-1} \equiv_p 1$. Weiterhin lässt sich das Inverse zu $a$ in $\integers_p^*$ berechnen als $a^{p-2}$.
+
+Sei $p$ eine Primzahl. Dann kann man mit $2 \log_2(p)$ Multiplikationen ein Inverses von $a \in \integers_p^*$ berechnen.
+
+\textbf{Wurzel}
+
+$r = \sqrt{g}$, falls $r^2 = g$
+
+\textbf{Polynome}
+
+$R[X]$ entspricht $x \mapsto \sum_{i=0}^d a_i x^i$, ist Ring wenn R Ring.
+
+Multiplikation $c=a_0\cdots a_d \cdot b_0\cdots b_{d'}$: $c_n = \sum_{i=0}^n a_i b_{n-i}$
+
+\textbf{Nullstellensatz}
+
+$a$ Nullstelle $\implies$ $(x-a)$ teilt Polynom. $p(x)$ höchstens $grad(p)$ Nullstellen.
+
+\section{Zahlentheorie}
+
+\textbf{Modulo}
+
+$a \mod m = r \equiv \exists x \in \Z: a = xm +r$
+
+$m|a \equiv a \mod m = 0$
+
+$am \modulo m = 0$
+
+$(am+b) \modulo m = b \modulo m$
+
+\textbf{Vertauschung}
+
+$(a \modulo m) + (b \modulo m) \modulo m = (a+b) \modulo m$.
+
+$(a \modulo m) \cdot (b \modulo m) \modulo m = (a \cdot b) \modulo m$
+
+\textbf{Teilerfremd}
+
+$a \ m \equiv \{x \in \integers\}{x |a \; \wedge \; x | m} = \{1,-1\}$
+
+\textbf{Teilbarkeit durch 9}
+
+$a \in \N$ mit Ziffern $a_i$
+
+$a = \sum_{i=0}^k 10^i \cdot a_i$
+
+Dann gilt $9 | a$ genau dann, wenn $9 | \sum_{i=0}^k a_i$
+
+\textbf{Lemma von Euklid}
+
+Seien $a,b$ und $m \in \natnum_+$ so, dass $a,m$ teilerfremd sind. Falls nun $m | ab$, so gilt $m|b$.
+Insbesondere gilt für alle $p$ Primzahlen und $a,b \in \integers$, dass falls $p | ab$, so $p | a$ oder $p | b$. 
+
+\textbf{Fundamentalsatz Arithmetik}
+
+Sei $a \in \natnum_+$. Dann gibt es genau ein 
+$k \in \natnum$, genau eine aufsteigende Sequenz an Primzahlen 
+$p_1 \lt p_2 \lt \cdots \lt p_k$ und genau eine Sequenz an Exponenten $z_1,…,z_k$ so, dass $a = \Pi_{i=1}^k \; p_i^{z_i}.$ 
+
+\textbf{Restklassen}
+
+$\integers_m = \{0,…,m-1\}$ $\integers_m^* = \{1,…,m-1\}$
+
+Sei $m \in \natnum_{\geq 2}$. Es gelten die folgenden Aussagen.
+
+$(\integers_m,+_m)$ ist eine abelsche Gruppe.
+
+Falls $m$ eine Primzahl ist, so ist $(\integers_m^*,\cdot_m)$ eine Gruppe.
+
+$(\integers_m,+_m,\cdot_m)$ ist ein Ring, bei dem die multiplikative Halbgruppe ein kommutatives Monoid ist.
+
+Falls $m$ eine Primzahl ist, so ist $(\integers_m,+_m,\cdot_m)$ ein Körper.
+
+\textbf{Inverse Modulo}
+
+Seien $a,m > 1$ teilerfremd. Dann gibt es ein $b \in \integers$ so, dass $ab \equiv_m 1$. 
+
+\section{Graphen}
+
+$G=(V,E)$
+
+Schleife $(v,v)$
+
+Pfad = Knotentupel, keine doppelten Knoten
+
+Kantenzug = Kantentupel, keine doppelten Kanten
+
+Einfacher Graph: ungerichtet, schleifenlos
+
+Ausgangsgrad $\delta_G^+(v) = |N_G^+(v)|$
+
+Eingangsgrad $\delta_G^-(v) = |N_G^-(v)|$
+
+Durchmesser $\max \{d(v,w) | v,w \in V\}$
+
+\textbf{Distanz}
+
+11.5 nur Metrik, wenn ungerichtet und zusammenhängend
+
+\textbf{Partit}
+
+k-partit: disjunkte Aufteilung in k Knotenmengen ohne Kanten untereinander.
+
+11.12: G bipartit $\iff$ jeder Kreis in G gerade Länge.
+
+\textbf{Arten}
+
+$K_n$: vollständiger Graph
+
+$K_{n,m}$: vollständig bipartiter
+
+$P_n$: Pfad
+
+$C_n$: Kreis
+
+$K_{1,n}$: Stern
+
+\textbf{Teilgraphen}
+
+$G'[U] = (U, \{(u,v) \in U^2 | (u,v) \in E'\})$ von U induzierter Teilgraph von G
+
+\textbf{Isomorphie}
+
+Bijektion $\varphi\colon V \rightarrow V'$ mit $\forall u,v \in V: (u,v) \in E \; \leftrightarrow \; (\varphi(u),\varphi(v)) \in E'$
+
+\textbf{Operationen}
+
+Graphen vereinigen: $G \uplus G'$ 
+
+Richtung umdrehen $G^{-1}$
+
+\textbf{Handschlaglemma}
+
+$\sum_{v \in V} \; \delta^+(v) \; = \; |E| \; = \; \sum_{v \in V} \; \delta^-(v)$
+
+Bei gerichteten Graphen $|E|$ ungerichtete Kantenanzahl:
+
+$\sum_{v \in V} \; \delta(v) \; = \; |E| \; = \; 2| \{\{u,v\} | (u,v) \in E\}|$
+
+\textbf{Euler}
+
+Eulerpfad / -kreis: Kantenzug, jede Kante genau einmal erwischt, Knotendopplung ok (geht gerichtet / ungerichtet)
+
+Ungerichteter G hat Eulerpfad $\equiv$ 2 oder 0 Knoten mit ungeradem Grad. Bei Eulerkreis 0 Knoten mit ungeradem Grad.
+
+\textbf{Hamilton}
+
+Hamiltonpfad / -kreis: Pfad, jeder Knoten genau einmal erwischt
+
+\textbf{Binärbäume}
+
+strikter: 2 oder 0 Kinder (12.7 ein Blatt mehr als innere Knoten)
+
+vollständiger: strikter Binärbaum, alle Blätter gleiche Höhe
+
+\textbf{Baumeinordnung}
+
+G Baum $\equiv$ G maximal kreisfrei $\equiv$ G minimal zusammenhängend $\equiv$ G kreisfrei mit $|E|=n-1$ $\equiv$ G zusammenhängend mit $|E|=n-1$.
+
+\subsection{Planare Graphen}
+
+\textbf{Euler'sche Polyederformel}
+
+Nicht-leerer, zusammenhängender planarer Graph mit n Knoten, m Kanten, f Flächen: $n+f-m = 2$
+
+\textbf{Kantenbeschränkung} $m \leq 3n-6$
+
+\textbf{Minimalknotengrad} ein Knoten Grad höchstens 5.
+
+\textbf{Färbbarkeit} Immer 4, 5, 6-färbbar.
+
+\textbf{Bipartite Kantenbeschränkung}
+
+Bipartiter, zusammenhängender, planarer Graph mit $\ge3$ Knoten hat max $2n-4$ Kanten
+
+\textbf{Nicht-Planar}
+
+$K_5, K_{3,3}$ minimal nicht-planar.
+
+\textbf{Fußballsatz}
+
+schwarze Fünfecke, weiße Sechsecke, jede Ecke 3 Flächen $\implies$ 12 schwarze Stücke.
+
+\section{Grenzwerte}
+
+$\forall^\infty \equiv \exists n_0 \in \natnum \forall n \in \natnum_{\geq n_0}$
+
+$\exists^\infty \equiv \forall n_0 \in \natnum \exists n \in \natnum_{\geq n_0}$
+
+\textbf{Folgen-Grenzwert}
+
+$lim_{n\to\infty} f(n) = r \iff \forall \varepsilon \in \realnum_+ \forall^\infty n \in \natnum: |f(n) - r| \leq \varepsilon$
+
+\textbf{Beispiel 13.3}
+
+$(c)_{n\in \natnum}$ Grenzwert c.
+
+$((-1)^n)_{n \in \natnum}$ kein Grenzwert.
+
+$(n)_{n \in \natnum}$ kein Grenzwert.
+
+$(1/(n+1))_{n \in \natnum}$ Grenzwert 0.
+
+\textbf{Limes-Rechenregeln}
+
+Addition, Multiplikation, Kehrwert, Potenz, Wurzel, Betrag, Division legit
+
+\textbf{Konvergenz des Betrags}
+
+$\lim_{n\to\infty} |f(n)|=0 \implies \lim_{n\to\infty} f(n)=0$
+
+\textbf{Teilfolge}
+
+$f:\N\to\R$ Folge, $g:\N\to\N$ strikt mon. steigend, $f\circ g$ ist Teilfolge von $f$. $\lim_{n\to\infty}f(n)=r \iff \forall g: \lim_{n\to\infty} f\circ g = r$
+
+\textbf{Grenzwert reeler Funktionen}
+
+$\lim_{x\to x_0}f(x) = r \iff \forall \epsilon\in\R_+\; \exists \delta\in\R_+\; \forall x\in\R: 0 < |x_0-x| \le \delta \implies |f(x)-r| \le \epsilon$
+
+Jeder $\epsilon$-Schlauch hat eine $\delta$-Säule
+
+13.10 $\lim_{x \rightarrow x_0} (f+g)(x) = r+s$
+$\lim_{x \rightarrow x_0} (f \cdot g)(x) = r \cdot s$
+
+\textbf{Sandwich reelle Grenzwerte}
+
+$f(x) \leq g(x) \leq h(x)$, dann $\lim_{x \rightarrow x_0} f(x) = \lim_{x \rightarrow x_0} h(x)=r \implies \lim_{x \rightarrow x_0} g(x)=r$
+
+\subsection{Stetigkeit}
+
+\textbf{Stetige Funktionen 13.13}
+
+$c, x, x^2, 1/x, exp, ln$
+
+\textbf{Argumentweise Addition/Multiplikation}
+
+$f$, $g$ stetig $\implies$ $f \circ g$, $f+g$, $f\cdot g$ stetig
+
+Polynomfunktionen immer stetig
+
+\textbf{Folgen-Stetigkeit}
+
+$f$ stetig $\iff$ $(x_n)_{n\in\N}$ konvergent $\implies$ $\lim_{n \rightarrow \infty} f(x_n) = f\left(\lim_{n \rightarrow \infty} x_n \right)$
+
+\textbf{Zwischenwertsatz} Wenn $f$ stetig, muss jeder Zwischenwert erreicht werden
+
+\textbf{Stetigkeitsarten}
+
+Lipschitz-Stetig $\subseteq$ $\epsilon$-$\delta$-Stetig = Folgen-Stetig $\subseteq$ ZW-Stetig 
+
+\section{O-Notation}
+
+\textbf{Ordnung auf Folgen}
+
+$f \leq g \Leftrightarrow \forall n \in \natnum: f(n) \leq g(n)$ nicht-totale Ordnungsrelation
+
+\textbf{Schließliche Ordnung}
+
+$f \leq_* g \Leftrightarrow \forall^\infty n: f(n) \leq g(n)$ nicht-totale Quasiordnung (nicht antisymmetrisch $f\leq_* g \land g \leq_* g \neg\implies f=g$)
+
+\textbf{O-Ordnung}
+
+$f \leq_{\bigOSymbol} g \Leftrightarrow \exists c \in \realnum_+ \forall^\infty n: f(n) \leq c \cdot g(n)$ und $f \lt_{\bigOSymbol} g \Leftrightarrow \forall c \in \realnum_+ \forall^\infty n: f(n) \leq c \cdot g(n)$
+
+O-Notation nicht-totale Quasiordnung
+
+14.10
+$f \leq g \implies f \leq_* g$
+$f \leq_* g \implies f \leq_{\bigOSymbol} g$
+Es gibt $f \leq_* g$ sod. nicht $f \leq g$
+Es gibt $f \leq_{\bigOSymbol} g$ sod. nicht $f \leq_* g$
+
+Rechenregeln O-Notation
+
+Falls $f \leq_{\bigOSymbol} h$ und $g \leq_{\bigOSymbol} h$. Dann gilt $f+g \leq_{\bigOSymbol} h$.
+Für $c \in \realnum_+$ gilt, falls $f \leq_{\bigOSymbol} g$, so $c \cdot f \leq_{\bigOSymbol} g$.
+
+Kardinalvergleiche O-Notation
+
+
+Für $c,d \in \realnum_+$ mit $d \gt c$ gilt $\left(n^c\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(n^d\right)_{n \in \natnum}$.
+Für $c \in \realnum_+$ und $a \in \realnum_{\gt 1}$ gilt $\left(n^c\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(a^n\right)_{n \in \natnum}$.
+Für $a,b \in \realnum_{\gt 1}$ mit $a \lt b$ gilt $\left(a^n\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(b^n\right)_{n \in \natnum}$.
+
+\end{multicols}
+
+\end{document}
