@@ -23,6 +23,7 @@
 
         buildInputs = with pkgs; [
             texlive.combined.scheme-full
+            gnumake
         ];
 
         shellHook = ''
