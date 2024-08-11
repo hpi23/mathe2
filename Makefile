@@ -1,7 +1,7 @@
 .PHONY: nix
 
-nix: flake.nix
-	nix flake update
-
 build: ./main.tex
 	lualatex main.tex
+
+build-nix: flake.nix flake.lock main.tex
+	nix build -o main.pdf

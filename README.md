@@ -4,12 +4,16 @@
 
 ## How do I build the PDF?
 
-### Prerequisites
+### With just `lualatex`
 
-If you have the [Nix](https://nixos.org/) package manager installed, execute `nix develop` in the project root to enter a devshell.
-The devshell installs all required software to build the PDF.
+If you already have a working LaTeX installation (`lualatex`) then you can use that to build the pdf.
+To run the build, execute `make build` in the project root.
+This will generate a `main.pdf` file in the root, which you can open with any pdf viewer.
 
-### Actual Build
+### With Nix
 
-We use `lualatex` as our Latex compiler.
-To invoke it, execute `make build` in the project root.
+If you don't want to setup a full LaTeX toolchain on your system you can use [Nix](https://nixos.org/) to fully automate the setup and build process.
+
+Just run `nix build -o main.pdf` to build the pdf.
+This will generate a `main.pdf` file in the root, which you can open with any pdf viewer.
+Note that this is just a symlink, and therefore might not support all of the operations of a normal file.

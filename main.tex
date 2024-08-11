@@ -14,23 +14,9 @@
 % Optional: Use a more modern sans-serif font, such as Helvetica or Arial
 \usepackage{helvet}
 
-% Subtitle https://tex.stackexchange.com/a/50186/197779
-\usepackage{titling}
-\newcommand{\subtitle}[1]{%
-  \posttitle{%
-    \par\end{center}
-    \begin{center}\large#1\end{center}}%
-}
-
-\title{Ihr Titel Hier}
-\subtitle{Untertitel}
-\author{Ihr Name}
-\date{\today}
-
 \setlength{\parindent}{0pt} % Set paragraph indentation to zero
 
-\usepackage{enumerate,amsthm,xcolor,graphicx,amsmath,amssymb,latexsym,framed,algorithmicx,algorithm,tikz,stmaryrd,enumitem}
-\usepackage{multicol}
+\usepackage{amsmath,amssymb,multicol}
 \newcommand{\br}{\hfill\newline\noindent}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\natnum}{\mathbb{N}}
@@ -47,9 +33,9 @@
 
 \begin{document}
 
-\section{Basics}
-
 \begin{multicols}{3}
+
+\section{Basics}
 
 \subsection{Logarithmusgesetze}
 
@@ -354,11 +340,11 @@ Insbesondere gilt für alle $p$ Primzahlen und $a,b \in \integers$, dass falls $
 
 Sei $a \in \natnum_+$. Dann gibt es genau ein 
 $k \in \natnum$, genau eine aufsteigende Sequenz an Primzahlen 
-$p_1 \lt p_2 \lt \cdots \lt p_k$ und genau eine Sequenz an Exponenten $z_1,…,z_k$ so, dass $a = \Pi_{i=1}^k \; p_i^{z_i}.$ 
+$p_1 \lt p_2 \lt \cdots \lt p_k$ und genau eine Sequenz an Exponenten $z_1,...,z_k$ so, dass $a = \Pi_{i=1}^k \; p_i^{z_i}.$ 
 
 \textbf{Restklassen}
 
-$\integers_m = \{0,…,m-1\}$ $\integers_m^* = \{1,…,m-1\}$
+$\integers_m = \{0,...,m-1\}$ $\integers_m^* = \{1,...,m-1\}$
 
 Sei $m \in \natnum_{\geq 2}$. Es gelten die folgenden Aussagen.
 

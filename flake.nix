@@ -10,30 +10,36 @@
     self,
     nixpkgs,
     flake-utils,
-    ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
+      };
+
+      tex = pkgs.texlive.combine {
+        inherit (pkgs.texlive) scheme-small latexmk helvetic;
       };
     in {
-      devShells.default = pkgs.mkShell {
-        name = "Mathe II";
+      packages.default =
+        pkgs.stdenv.mkDerivation
+        rec {
+          name = "mathe2-tex-build";
+          src = self;
+          buildInputs = with pkgs; [coreutils tex];
 
-        buildInputs = with pkgs; [
-            texlive.combined.scheme-full
-            gnumake
-        ];
-
-        shellHook = ''
-          # if running from zsh, reenter zsh
-          if [[ $(ps -e | grep $PPID) == *"zsh" ]]; then
-            zsh
-            exit
-          fi
-        '';
-      };
+          phases = ["unpackPhase" "buildPhase" "installPhase"];
+          buildPhase = ''
+            export PATH="${pkgs.lib.makeBinPath buildInputs}";
+            mkdir -p .cache/texmf-var
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              latexmk -interaction=nonstopmode -pdf -pdflatex \
+              main.tex
+          '';
+          installPhase = ''
+            # mkdir -p $out
+            cp main.pdf $out
+          '';
+        };
 
       formatter = nixpkgs.legacyPackages.${system}.alejandra;
     });
