@@ -181,7 +181,7 @@ $f$ surj $\iff$ Es gibt eine injektive Funktion $g\colon B \rightarrow A$ so, da
 
 $f\colon A \rightarrow B$ injektiv, wenn $|A| \leq |B|$.
 
-$f\colon A \rightarrow B$ surjektiv, wenn $|A| \leq |B|$.
+$f\colon A \rightarrow B$ surjektiv, wenn $|A| \geq |B|$.
 
 $A \subseteq B$, so gilt $|A| \leq |B|$.
 
@@ -563,24 +563,31 @@ $f \leq_{\bigOSymbol} g \Leftrightarrow \exists c \in \realnum_+ \forall^\infty 
 
 O-Notation nicht-totale Quasiordnung
 
-14.10
+\textbf{Funktionsordnungssätze 14.10}
+
 $f \leq g \implies f \leq_* g$
+
 $f \leq_* g \implies f \leq_{\bigOSymbol} g$
+
 Es gibt $f \leq_* g$ sod. nicht $f \leq g$
+
 Es gibt $f \leq_{\bigOSymbol} g$ sod. nicht $f \leq_* g$
 
-Rechenregeln O-Notation
+\textbf{Rechenregeln O-Notation}
 
 Falls $f \leq_{\bigOSymbol} h$ und $g \leq_{\bigOSymbol} h$. Dann gilt $f+g \leq_{\bigOSymbol} h$.
+
 Für $c \in \realnum_+$ gilt, falls $f \leq_{\bigOSymbol} g$, so $c \cdot f \leq_{\bigOSymbol} g$.
 
-Kardinalvergleiche O-Notation
-
+\textbf{Kardinalvergleiche O-Notation}
 
 Für $c,d \in \realnum_+$ mit $d \gt c$ gilt $\left(n^c\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(n^d\right)_{n \in \natnum}$.
+
 Für $c \in \realnum_+$ und $a \in \realnum_{\gt 1}$ gilt $\left(n^c\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(a^n\right)_{n \in \natnum}$.
+
 Für $a,b \in \realnum_{\gt 1}$ mit $a \lt b$ gilt $\left(a^n\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(b^n\right)_{n \in \natnum}$.
 
 \end{multicols}
 
 \end{document}
+
