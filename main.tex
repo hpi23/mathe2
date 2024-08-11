@@ -35,6 +35,7 @@
 
 \begin{multicols}{3}
 
+
 \section{Basics}
 
 \subsection{Logarithmusgesetze}
@@ -107,6 +108,7 @@ $(1+x)^n \geq 1+nx$
 \textbf{Binomischer Lehrsatz}
 
 $(a+b)^n = \sum_{i=0}^n \binom{n}{i} a^i b^{n-i}$
+
 
 \section{Aussagenlogik}
 
@@ -192,6 +194,7 @@ Reflexivität $a \equiv a$
 Symetrie $a \equiv b \rightarrow b \equiv a$
 
 Transitivität $a \equiv b \land b \equiv c \rightarrow a \equiv c$
+
 
 \section{Algebra}
 
@@ -309,6 +312,7 @@ Multiplikation $c=a_0\cdots a_d \cdot b_0\cdots b_{d'}$: $c_n = \sum_{i=0}^n a_i
 
 $a$ Nullstelle $\implies$ $(x-a)$ teilt Polynom. $p(x)$ höchstens $grad(p)$ Nullstellen.
 
+
 \section{Zahlentheorie}
 
 \textbf{Modulo}
@@ -367,6 +371,7 @@ Falls $m$ eine Primzahl ist, so ist $(\integers_m,+_m,\cdot_m)$ ein Körper.
 \textbf{Inverse Modulo}
 
 Seien $a,m > 1$ teilerfremd. Dann gibt es ein $b \in \integers$ so, dass $ab \equiv_m 1$. 
+
 
 \section{Graphen}
 
@@ -474,6 +479,7 @@ $K_5, K_{3,3}$ minimal nicht-planar.
 
 schwarze Fünfecke, weiße Sechsecke, jede Ecke 3 Flächen $\implies$ 12 schwarze Stücke.
 
+
 \section{Grenzwerte}
 
 $\forall^\infty \equiv \exists n_0 \in \natnum \forall n \in \natnum_{\geq n_0}$
@@ -541,6 +547,7 @@ $f$ stetig $\iff$ $(x_n)_{n\in\N}$ konvergent $\implies$ $\lim_{n \rightarrow \i
 
 Lipschitz-Stetig $\subseteq$ $\epsilon$-$\delta$-Stetig = Folgen-Stetig $\subseteq$ ZW-Stetig 
 
+
 \section{O-Notation}
 
 \textbf{Ordnung auf Folgen}
@@ -580,6 +587,20 @@ Für $c,d \in \realnum_+$ mit $d \gt c$ gilt $\left(n^c\right)_{n \in \natnum} \
 Für $c \in \realnum_+$ und $a \in \realnum_{\gt 1}$ gilt $\left(n^c\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(a^n\right)_{n \in \natnum}$.
 
 Für $a,b \in \realnum_{\gt 1}$ mit $a \lt b$ gilt $\left(a^n\right)_{n \in \natnum} \lt_{\bigOSymbol} \left(b^n\right)_{n \in \natnum}$.
+
+
+\section{Induktion}
+
+
+\textbf{Induktionsschema}
+
+$\varphi(n)$ Aussage über natürliche Zahl $n$. Zu zeigen $\forall n \in \natnum\colon \; \varphi(n)$.
+
+Induktionsbeginn (IB) Zeige: $\varphi(0)$.
+
+Induktionsvoraussetzung (IV) Sei $n \in \natnum$. Nimm an $\varphi(n)$.
+
+Induktionsschritt (IS) Zeige nun $\varphi(n+1)$. 
 
 \end{multicols}
 
